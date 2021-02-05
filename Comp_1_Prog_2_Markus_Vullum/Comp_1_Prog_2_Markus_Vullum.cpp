@@ -14,21 +14,21 @@ private:
     int Animal_ID;
 };
 
-class Dog:Animal {
+class Dog :Animal {
 public:
     //speak class that override Speak()
 private:
 
 };
 
-class Cat:Animal {
+class Cat :Animal {
 public:
     //speak class that override Speak()
 private:
 
 };
 
-class Bird:Animal {
+class Bird :Animal {
 public:
     //speak class that override Speak()
 private:
@@ -69,10 +69,12 @@ std::tuple<V1, V2> MyTemp<V1, V2>::GetVal()
 int main()
 {
     MyTemp<std::string, int> obj1{ "Markus", 19 };
-    std::string result;
-    result = obj1.getValueV1();
-    std::cout << result << std::endl;
+    int x;
+    std::string result2;
 
-    auto val = obj1.GetVal();
-    std::cout << "x=" << std::get<0>(val) << " y=" << std::get<1>(val) << std::endl;
+    std::tuple<std::string, int> result = obj1.GetVal();  // returns the  x and y to result
+    std::string name = std::get<0>(result);  // 0 index is x which is string 
+    int age = std::get<1>(result);   // 1 index is y which is int 
+    auto Merged = name + std::to_string(age); // merge strung with integer
+    std::cout << Merged << std::endl;
 }
